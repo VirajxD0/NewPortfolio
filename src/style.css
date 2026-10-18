@@ -5,12 +5,12 @@
 }
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 183, 197, 0.35) transparent;
+  scrollbar-width: none;
 }
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  display: none;
+  width: 0;
+  height: 0;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -83,8 +83,7 @@ nav .links a:hover {
 }
 
 .scroll-content {
-  position: relative;
-  z-index: 10;
+  position: static;
   pointer-events: none;
 }
 
@@ -98,11 +97,8 @@ nav .links a:hover {
 
 .section-text {
   text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease;
+  opacity: 1;
+  transform: none;
   pointer-events: auto;
   max-width: 700px;
   padding: 0 40px;
@@ -110,7 +106,7 @@ nav .links a:hover {
 
 .section-text.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .section-text h2 {
@@ -121,6 +117,7 @@ nav .links a:hover {
   margin-bottom: 16px;
   color: #fff;
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 18px rgba(20, 8, 25, 0.7);
 }
 
 .section-text p {
@@ -128,13 +125,9 @@ nav .links a:hover {
   font-size: 13px;
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.02em;
-}
-
-.section:first-child .section-text {
-  opacity: 1;
-  transform: translateY(0);
+  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
 }
 
 .scroll-indicator {
@@ -237,25 +230,28 @@ nav .links a:hover {
 .eyebrow {
   font-family: "Inter", sans-serif;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 900;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 190, 210, 0.75);
+  color: rgba(255, 190, 210, 0.95);
   margin-bottom: 10px;
+  text-shadow: 0 1px 8px rgba(20, 8, 25, 0.976);
 }
 .subtitle {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: clamp(18px, 2.4vw, 26px);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 18px;
+  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
 }
 .objective,
 .contact-intro,
 .intro-line,
 .muted {
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
 }
 .objective {
   font-size: 15px;
@@ -498,7 +494,7 @@ nav .links a:hover {
   font-size: 11px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 }
 .chevron {
   font-size: 20px;
@@ -662,6 +658,35 @@ nav .links a:hover {
   transition-delay: 0.4s;
 }
 
+/* containers that hold glass cards must never create a stacking
+   context, otherwise their backdrop-filter can't reach the canvas */
+.section-text > .about-grid,
+.section-text > .exp-card,
+.section-text > .skills-grid,
+.section-text > .projects-list,
+.section-text > .contact-grid,
+.section-text > .contact-row {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* animate the glass elements themselves so the canvas stays in
+   their backdrop even mid-transition */
+.section-text .glass,
+.section-text .contact-chip {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.section-text.visible .glass,
+.section-text.visible .contact-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 760px) {
   .about-grid {
     grid-template-columns: 1fr;
@@ -682,4 +707,102 @@ nav .links a:hover {
   .exp-head {
     flex-direction: column;
   }
+
+  /* ---- mobile layout fixes ---- */
+  nav {
+    padding: 14px 18px;
+  }
+  nav .logo {
+    font-size: 12px;
+  }
+  nav .links {
+    gap: 8px 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  nav .links a {
+    font-size: 11px;
+  }
+
+  .section {
+    height: auto;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding: 88px 0 48px;
+  }
+  .section-text {
+    max-width: 100%;
+    padding: 0 18px;
+  }
+  .section-text h2 {
+    font-size: clamp(30px, 9vw, 46px);
+  }
+  .section-text p {
+    font-size: 12.5px;
+  }
+  .subtitle {
+    font-size: clamp(16px, 4.5vw, 22px);
+  }
+  .objective,
+  .contact-intro,
+  .intro-line {
+    font-size: 13px;
+  }
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  .contact-row {
+    gap: 8px;
+  }
+  .contact-chip {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  .about-block,
+  .skill-group {
+    padding: 14px 16px;
+  }
+  .exp-card {
+    padding: 16px 18px;
+  }
+  .exp-head h3 {
+    font-size: 22px;
+  }
+  .exp-bullets li {
+    font-size: 12.5px;
+  }
+
+  .project-head {
+    padding: 14px 16px;
+  }
+  .project-title {
+    font-size: 18px;
+  }
+  .project-body-inner {
+    padding: 0 16px 16px;
+  }
+
+  .contact-card {
+    padding: 14px 10px;
+  }
+
+  .section-number {
+    display: none;
+  }
+  .scroll-indicator {
+    bottom: 18px;
+  }
+  .scroll-indicator span {
+    font-size: 10px;
+  }
 }
+
+/* colored capsules for skill chips and project tech tags */
+.chip:nth-child(6n+1), .tag:nth-child(6n+1) { background: rgba(255, 183, 197, 0.16); border-color: rgba(255, 183, 197, 0.4); color: #ffd6e0; }
+.chip:nth-child(6n+2), .tag:nth-child(6n+2) { background: rgba(120, 200, 255, 0.16); border-color: rgba(120, 200, 255, 0.4); color: #bfe3ff; }
+.chip:nth-child(6n+3), .tag:nth-child(6n+3) { background: rgba(180, 255, 200, 0.14); border-color: rgba(180, 255, 200, 0.38); color: #d6ffe3; }
+.chip:nth-child(6n+4), .tag:nth-child(6n+4) { background: rgba(255, 210, 120, 0.16); border-color: rgba(255, 210, 120, 0.4); color: #ffe7b3; }
+.chip:nth-child(6n+5), .tag:nth-child(6n+5) { background: rgba(200, 170, 255, 0.16); border-color: rgba(200, 170, 255, 0.4); color: #e4d6ff; }
+.chip:nth-child(6n+6), .tag:nth-child(6n+6) { background: rgba(255, 150, 200, 0.16); border-color: rgba(255, 150, 200, 0.4); color: #ffc6de; }
