@@ -141,8 +141,18 @@ export function createScene(container) {
 
   // ---- Realistic shader grass ----
   const instanceCount = 20000;
-  const grassGeometry = new THREE.PlaneGeometry(0.08, 1.5, 1, 8);
-  grassGeometry.translate(0, 0.75, 0);
+  const grassGeometry = new THREE.PlaneGeometry(0.08, 1.0, 1, 8);
+  grassGeometry.translate(0, 0.5, 0);
+  // taper blades to a pointy tip
+  const posAttr = grassGeometry.attributes.position;
+  for (let i = 0; i < posAttr.count; i++) {
+    const y = posAttr.getY(i);
+    const t = Math.max(0, Math.min(1, y / 1.0));
+    const taper = 1.0 - t * t;
+    posAttr.setX(i, posAttr.getX(i) * taper);
+  }
+  posAttr.needsUpdate = true;
+  grassGeometry.computeVertexNormals();
 
   const grassMaterial = new THREE.ShaderMaterial({
     uniforms: {
@@ -164,7 +174,7 @@ export function createScene(container) {
       varying float vVariation;
 
       void main() {
-        vHeight = clamp(position.y / 1.5, 0.0, 1.0);
+        vHeight = clamp(position.y / 1.0, 0.0, 1.0);
         vVariation = amplitude;
 
         vec4 bladePosition = instanceMatrix * vec4(position, 1.0);
