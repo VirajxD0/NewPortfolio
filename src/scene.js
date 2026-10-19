@@ -1,5 +1,11 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 export function createScene(container) {
   const scene = new THREE.Scene();
@@ -41,12 +47,19 @@ export function createScene(container) {
       varying vec3 vWorldPos;
       uniform float uTime;
       void main() {
-        float h = normalize(vWorldPos).y;
-        vec3 bottom = vec3(0.85, 0.55, 0.65);
-        vec3 mid = vec3(0.55, 0.45, 0.72);
-        vec3 top = vec3(0.3, 0.35, 0.7);
-        vec3 col = mix(bottom, mid, smoothstep(-0.1, 0.3, h));
-        col = mix(col, top, smoothstep(0.3, 0.8, h));
+        vec3 dir = normalize(vWorldPos);
+        float h = dir.y;
+        vec3 bottom = vec3(0.92, 0.62, 0.7);
+        vec3 mid = vec3(0.62, 0.48, 0.74);
+        vec3 top = vec3(0.28, 0.32, 0.62);
+        vec3 col = mix(bottom, mid, smoothstep(-0.05, 0.35, h));
+        col = mix(col, top, smoothstep(0.35, 0.9, h));
+        // subtle sun disc
+        vec3 sunDir = normalize(vec3(0.4, 0.55, 0.6));
+        float sun = pow(max(dot(dir, sunDir), 0.0), 256.0);
+        col += vec3(1.0, 0.85, 0.6) * sun * 0.6;
+        // horizon haze
+        col = mix(col, vec3(0.95, 0.75, 0.8), smoothstep(0.0, -0.15, h) * 0.4);
         gl_FragColor = vec4(col, 1.0);
       }
     `
@@ -82,6 +95,12 @@ export function createScene(container) {
   backLight.position.set(-5, 8, -10);
   backLight.name = 'backLight';
   scene.add(backLight);
+
+  // Hemisphere light for realistic ambient fill (sky/ground)
+  const hemiLight = new THREE.HemisphereLight(0xffd6e0, 0x2a4a2a, 0.5);
+  hemiLight.position.set(0, 20, 0);
+  hemiLight.name = 'hemiLight';
+  scene.add(hemiLight);
 
   // Ground
   const groundGeo = new THREE.PlaneGeometry(80, 80, 60, 60);
@@ -126,7 +145,7 @@ export function createScene(container) {
     const group = new THREE.Group();
     const blossomMat = new THREE.MeshStandardMaterial({
       color: color || 0xffb7c5, roughness: 0.6,
-      emissive: color || 0xffb7c5, emissiveIntensity: 0.08,
+      emissive: color || 0xffb7c5, emissiveIntensity: 0.18,
       transparent: true, opacity: 0.9,
     });
     for (let i = 0; i < density; i++) {
@@ -375,6 +394,30 @@ export function createScene(container) {
     { pos: new THREE.Vector3(-12, 5, 14), lookAt: new THREE.Vector3(0, 3, -2) },
   ];
 
+  // Post-processing for cinematic realism
+  const composer = new EffectComposer(renderer);
+  composer.addPass(new RenderPass(scene, camera));
+
+  const ssaoPass = new SSAOPass(scene, camera, window.innerWidth, window.innerHeight);
+  ssaoPass.kernelRadius = 8;
+  ssaoPass.minDistance = 0.005;
+  ssaoPass.maxDistance = 0.1;
+  ssaoPass.output = SSAOPass.OUTPUT.Default;
+  composer.addPass(ssaoPass);
+
+  const bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    0.6,   // strength
+    0.4,   // radius
+    0.85   // threshold
+  );
+  composer.addPass(bloomPass);
+
+  const smaaPass = new SMAAPass(window.innerWidth, window.innerHeight);
+  composer.addPass(smaaPass);
+
+  composer.addPass(new OutputPass());
+
   function updateAnimations(time) {
     skyMat.uniforms.uTime.value = time;
     const positions = petalGeo.attributes.position.array;
@@ -418,5 +461,5 @@ export function createScene(container) {
     controls.update();
   }
 
-  return { scene, camera, renderer, cameraViews, updateAnimations, controls };
+  return { scene, camera, renderer, cameraViews, updateAnimations, controls, composer };
 }

@@ -4,7 +4,7 @@ import { initScroll } from './scroll.js';
 import { initAccordion } from './accordion.js';
 
 const container = document.getElementById('canvas-container');
-const { scene, camera, renderer, cameraViews, updateAnimations, controls } = createScene(container);
+const { scene, camera, renderer, cameraViews, updateAnimations, controls, composer } = createScene(container);
 
 const sectionTexts = document.querySelectorAll('.section-text');
 const dots = document.querySelectorAll('.section-number .dot');
@@ -27,13 +27,14 @@ renderer.setAnimationLoop(() => {
   time += 0.016;
   if (!freeRoam) scroll.tick();
   updateAnimations(time);
-  renderer.render(scene, camera);
+  composer.render();
 });
 
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  composer.setSize(window.innerWidth, window.innerHeight);
 });
 
 initAccordion();

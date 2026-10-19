@@ -6,10 +6,10 @@ export function initScroll(camera, cameraViews, sectionTexts, dots, scrollIndica
 
   window.addEventListener('scroll', () => {
     targetScroll = window.scrollY;
-  });
+  }, { passive: true });
 
   function tick() {
-    currentScroll += (targetScroll - currentScroll) * 0.08;
+    currentScroll += (targetScroll - currentScroll) * 0.2;
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = Math.max(0, Math.min(1, currentScroll / scrollHeight));
     const sectionProgress = progress * (cameraViews.length - 1);
