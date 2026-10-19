@@ -140,33 +140,71 @@ export function createScene(container) {
   scene.add(ground);
 
   // ---- Realistic shader grass ----
-  const instanceCount = 3000;
-  const grassGeometry = new THREE.PlaneGeometry(0.12, 1.5, 1, 8);
+  const instanceCount = 20000;
+  const grassGeometry = new THREE.PlaneGeometry(0.08, 1.5, 1, 8);
   grassGeometry.translate(0, 0.75, 0);
 
   const grassMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      time: { value: 0 },
+      windStrength: { value: 0.22 },
+      windDirection: { value: new THREE.Vector2(1.0, 0.35).normalize() },
+      windSpeed: { value: 1.0 },
+    },
     vertexShader: `
       attribute float phase;
       attribute float amplitude;
+
       uniform float time;
       uniform float windStrength;
-      varying float vHeightRatio;
+      uniform float windSpeed;
+      uniform vec2 windDirection;
+
+      varying float vHeight;
+      varying float vVariation;
+
       void main() {
-        vHeightRatio = position.y / 1.5;
-        vec3 pos = position;
-        float heightPower = vHeightRatio * vHeightRatio;
-        float windEffect = sin(time + phase) * windStrength * heightPower;
-        pos.x += windEffect * amplitude;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-      }`,
+        vHeight = clamp(position.y / 1.5, 0.0, 1.0);
+        vVariation = amplitude;
+
+        vec4 bladePosition = instanceMatrix * vec4(position, 1.0);
+        vec3 origin = (instanceMatrix * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+
+        float bend = vHeight * vHeight;
+        float wavePosition = dot(origin.xz, normalize(windDirection));
+
+        float wave = sin(
+          wavePosition * 0.65 - time * windSpeed + phase
+        );
+
+        float gust = sin(
+          wavePosition * 0.28 - time * windSpeed * 0.55 + phase * 0.4
+        );
+
+        float sway = (wave * 0.7 + gust * 0.3)
+                   * windStrength * amplitude * bend;
+
+        bladePosition.x += windDirection.x * sway;
+        bladePosition.z += windDirection.y * sway;
+
+        gl_Position = projectionMatrix * modelViewMatrix * bladePosition;
+      }
+    `,
     fragmentShader: `
-      varying float vHeightRatio;
+      varying float vHeight;
+      varying float vVariation;
+
       void main() {
-        vec3 grassColor = mix(vec3(0.1, 0.3, 0.1), vec3(0.3, 0.7, 0.2), vHeightRatio);
+        vec3 rootColor = vec3(0.075, 0.14, 0.035);
+        vec3 tipColor  = vec3(0.30, 0.43, 0.12);
+
+        vec3 grassColor = mix(rootColor, tipColor, smoothstep(0.0, 1.0, vHeight));
+        grassColor *= mix(0.78, 1.12, vVariation);
+
         gl_FragColor = vec4(grassColor, 1.0);
-      }`,
-    uniforms: { time: { value: 0 }, windStrength: { value: 2.5 } },
-    side: THREE.DoubleSide
+      }
+    `,
+    side: THREE.DoubleSide,
   });
 
   const grassField = new THREE.InstancedMesh(grassGeometry, grassMaterial, instanceCount);
@@ -174,7 +212,7 @@ export function createScene(container) {
   const phases = new Float32Array(instanceCount);
   const amplitudes = new Float32Array(instanceCount);
   const dummy = new THREE.Object3D();
-  const area = 36;
+  const area = 30;
   for (let i = 0; i < instanceCount; i++) {
     const x = (Math.random() - 0.5) * area * 2;
     const z = (Math.random() - 0.5) * area * 2;
