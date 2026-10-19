@@ -139,66 +139,60 @@ export function createScene(container) {
   ground.name = 'ground';
   scene.add(ground);
 
-  // ---- Instanced grass blades ----
-  const bladeCount = 2500;
-  const bladeGeo = new THREE.PlaneGeometry(0.08, 0.5, 1, 4);
-  bladeGeo.translate(0, 0.25, 0);
-  const bladeCanvas = document.createElement('canvas');
-  bladeCanvas.width = 64;
-  bladeCanvas.height = 128;
-  const bctx = bladeCanvas.getContext('2d');
-  const grad = bctx.createLinearGradient(0, 0, 0, 128);
-  grad.addColorStop(0, 'rgba(255,255,255,1)');
-  grad.addColorStop(1, 'rgba(255,255,255,0)');
-  bctx.fillStyle = grad;
-  bctx.beginPath();
-  bctx.moveTo(32, 0);
-  bctx.lineTo(64, 128);
-  bctx.lineTo(0, 128);
-  bctx.closePath();
-  bctx.fill();
-  const bladeTex = new THREE.CanvasTexture(bladeCanvas);
-  bladeTex.colorSpace = THREE.SRGBColorSpace;
+  // ---- Realistic shader grass ----
+  const instanceCount = 3000;
+  const grassGeometry = new THREE.PlaneGeometry(0.12, 1.5, 1, 8);
+  grassGeometry.translate(0, 0.75, 0);
 
-  const bladeMat = new THREE.MeshStandardMaterial({
-    color: 0x5a8a4a,
-    map: bladeTex,
-    alphaMap: bladeTex,
-    transparent: true,
-    alphaTest: 0.45,
-    side: THREE.DoubleSide,
-    roughness: 0.7,
-    metalness: 0.0,
+  const grassMaterial = new THREE.ShaderMaterial({
+    vertexShader: `
+      attribute float phase;
+      attribute float amplitude;
+      uniform float time;
+      uniform float windStrength;
+      varying float vHeightRatio;
+      void main() {
+        vHeightRatio = position.y / 1.5;
+        vec3 pos = position;
+        float heightPower = vHeightRatio * vHeightRatio;
+        float windEffect = sin(time + phase) * windStrength * heightPower;
+        pos.x += windEffect * amplitude;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }`,
+    fragmentShader: `
+      varying float vHeightRatio;
+      void main() {
+        vec3 grassColor = mix(vec3(0.1, 0.3, 0.1), vec3(0.3, 0.7, 0.2), vHeightRatio);
+        gl_FragColor = vec4(grassColor, 1.0);
+      }`,
+    uniforms: { time: { value: 0 }, windStrength: { value: 2.5 } },
+    side: THREE.DoubleSide
   });
-  const grass = new THREE.InstancedMesh(bladeGeo, bladeMat, bladeCount);
-  grass.name = 'grassBlades';
-  grass.castShadow = true;
-  grass.receiveShadow = true;
 
+  const grassField = new THREE.InstancedMesh(grassGeometry, grassMaterial, instanceCount);
+  grassField.name = 'grassField';
+  const phases = new Float32Array(instanceCount);
+  const amplitudes = new Float32Array(instanceCount);
   const dummy = new THREE.Object3D();
-  const grassData = [];
   const area = 36;
-  for (let i = 0; i < bladeCount; i++) {
+  for (let i = 0; i < instanceCount; i++) {
     const x = (Math.random() - 0.5) * area * 2;
     const z = (Math.random() - 0.5) * area * 2;
     const y = Math.sin(x * 0.15) * Math.cos(z * 0.15) * 0.3;
-    const rotY = Math.random() * Math.PI * 2;
-    const scale = 0.7 + Math.random() * 0.9;
-    dummy.position.set(x, y, z);
-    dummy.rotation.set(0, rotY, 0);
+    const scale = 0.8 + Math.random() * 0.4;
+    const rotation = Math.random() * Math.PI * 2;
+    dummy.position.set(x, y + 0.02, z);
+    dummy.rotation.set(0, rotation, 0);
     dummy.scale.set(scale, scale, scale);
     dummy.updateMatrix();
-    grass.setMatrixAt(i, dummy.matrix);
-    grassData.push({ x, y, z, rotY, scale, phase: Math.random() * Math.PI * 2, speed: 0.8 + Math.random() * 1.2 });
-    const c = new THREE.Color().setHSL(0.28 + Math.random() * 0.06, 0.55, 0.22 + Math.random() * 0.18);
-    grass.setColorAt(i, c);
+    grassField.setMatrixAt(i, dummy.matrix);
+    phases[i] = Math.random() * Math.PI * 2;
+    amplitudes[i] = 0.5 + Math.random() * 0.5;
   }
-  grass.instanceMatrix.needsUpdate = true;
-  grass.instanceColor.needsUpdate = true;
-  scene.add(grass);
-
-  // store grassData globally for updateAnimations
-  window.__grassData = grassData;
+  grassGeometry.setAttribute('phase', new THREE.InstancedBufferAttribute(phases, 1));
+  grassGeometry.setAttribute('amplitude', new THREE.InstancedBufferAttribute(amplitudes, 1));
+  grassField.instanceMatrix.needsUpdate = true;
+  scene.add(grassField);
 
   // Moss patches
   const mossMat = new THREE.MeshStandardMaterial({ color: 0x3a6a3a, roughness: 1.0 });
@@ -531,20 +525,7 @@ export function createScene(container) {
 
     pondMat.opacity = 0.75 + Math.sin(time * 1.5) * 0.05;
 
-    const grassMesh = scene.getObjectByName('grassBlades');
-    const grassData = window.__grassData;
-    if (grassMesh && grassData) {
-      const dummy = new THREE.Object3D();
-      grassData.forEach((d, i) => {
-        const sway = Math.sin(time * d.speed + d.phase) * 0.18;
-        dummy.position.set(d.x, d.y, d.z);
-        dummy.rotation.set(sway, d.rotY, 0);
-        dummy.scale.set(d.scale, d.scale, d.scale);
-        dummy.updateMatrix();
-        grassMesh.setMatrixAt(i, dummy.matrix);
-      });
-      grassMesh.instanceMatrix.needsUpdate = true;
-    }
+    grassMaterial.uniforms.time.value = time;
 
     scene.children.forEach(child => {
       if (child.name && child.name.startsWith('lantern')) {
