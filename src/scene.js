@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 export function createScene(container) {
   const scene = new THREE.Scene();
@@ -16,6 +17,13 @@ export function createScene(container) {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.appendChild(renderer.domElement);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.minDistance = 3;
+  controls.maxDistance = 60;
+  controls.enabled = false;
 
   // Sky gradient
   const skyGeo = new THREE.SphereGeometry(90, 32, 32);
@@ -406,7 +414,9 @@ export function createScene(container) {
         lights.forEach(l => { l.intensity = 0.4 + Math.sin(time * 3 + Math.random() * 0.1) * 0.15; });
       }
     });
+
+    controls.update();
   }
 
-  return { scene, camera, renderer, cameraViews, updateAnimations };
+  return { scene, camera, renderer, cameraViews, updateAnimations, controls };
 }

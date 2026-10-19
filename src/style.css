@@ -806,3 +806,16 @@ nav .links a:hover {
 .chip:nth-child(6n+4), .tag:nth-child(6n+4) { background: rgba(255, 210, 120, 0.16); border-color: rgba(255, 210, 120, 0.4); color: #ffe7b3; }
 .chip:nth-child(6n+5), .tag:nth-child(6n+5) { background: rgba(200, 170, 255, 0.16); border-color: rgba(200, 170, 255, 0.4); color: #e4d6ff; }
 .chip:nth-child(6n+6), .tag:nth-child(6n+6) { background: rgba(255, 150, 200, 0.16); border-color: rgba(255, 150, 200, 0.4); color: #ffc6de; }
+
+/* Free-roam toggle */
+.roam-toggle {
+  position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  padding: 10px 18px; border-radius: 999px;
+  border: 1px solid rgba(255, 183, 197, 0.4);
+  background: rgba(20, 8, 25, 0.55); color: #ffd6e0;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.04em;
+  cursor: pointer; transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.roam-toggle:hover { transform: translateY(-2px); border-color: rgba(255, 183, 197, 0.7); }
+.roam-toggle.active { background: rgba(255, 183, 197, 0.22); color: #fff; }
