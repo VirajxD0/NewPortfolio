@@ -112,12 +112,93 @@ export function createScene(container) {
     positions.setZ(i, y);
   }
   groundGeo.computeVertexNormals();
-  const groundMat = new THREE.MeshStandardMaterial({ color: 0x2a4a2a, roughness: 0.95, metalness: 0.0 });
+  const texLoader = new THREE.TextureLoader();
+  const repeat = 12;
+  const base = import.meta.env.BASE_URL;
+  const colorMap = texLoader.load(base + 'textures/grass_color.png');
+  const normalMap = texLoader.load(base + 'textures/grass_normal.png');
+  const roughnessMap = texLoader.load(base + 'textures/grass_roughness.png');
+  [colorMap, normalMap, roughnessMap].forEach((t) => {
+    t.wrapS = THREE.RepeatWrapping;
+    t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(repeat, repeat);
+  });
+  colorMap.colorSpace = THREE.SRGBColorSpace;
+
+  const groundMat = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    map: colorMap,
+    normalMap: normalMap,
+    roughnessMap: roughnessMap,
+    roughness: 0.85,
+    metalness: 0.0,
+  });
   const ground = new THREE.Mesh(groundGeo, groundMat);
   ground.rotation.x = -Math.PI / 2;
   ground.receiveShadow = true;
   ground.name = 'ground';
   scene.add(ground);
+
+  // ---- Instanced grass blades ----
+  const bladeCount = 2500;
+  const bladeGeo = new THREE.PlaneGeometry(0.08, 0.5, 1, 4);
+  bladeGeo.translate(0, 0.25, 0);
+  const bladeCanvas = document.createElement('canvas');
+  bladeCanvas.width = 64;
+  bladeCanvas.height = 128;
+  const bctx = bladeCanvas.getContext('2d');
+  const grad = bctx.createLinearGradient(0, 0, 0, 128);
+  grad.addColorStop(0, 'rgba(255,255,255,1)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  bctx.fillStyle = grad;
+  bctx.beginPath();
+  bctx.moveTo(32, 0);
+  bctx.lineTo(64, 128);
+  bctx.lineTo(0, 128);
+  bctx.closePath();
+  bctx.fill();
+  const bladeTex = new THREE.CanvasTexture(bladeCanvas);
+  bladeTex.colorSpace = THREE.SRGBColorSpace;
+
+  const bladeMat = new THREE.MeshStandardMaterial({
+    color: 0x5a8a4a,
+    map: bladeTex,
+    alphaMap: bladeTex,
+    transparent: true,
+    alphaTest: 0.45,
+    side: THREE.DoubleSide,
+    roughness: 0.7,
+    metalness: 0.0,
+  });
+  const grass = new THREE.InstancedMesh(bladeGeo, bladeMat, bladeCount);
+  grass.name = 'grassBlades';
+  grass.castShadow = true;
+  grass.receiveShadow = true;
+
+  const dummy = new THREE.Object3D();
+  const grassData = [];
+  const area = 36;
+  for (let i = 0; i < bladeCount; i++) {
+    const x = (Math.random() - 0.5) * area * 2;
+    const z = (Math.random() - 0.5) * area * 2;
+    const y = Math.sin(x * 0.15) * Math.cos(z * 0.15) * 0.3;
+    const rotY = Math.random() * Math.PI * 2;
+    const scale = 0.7 + Math.random() * 0.9;
+    dummy.position.set(x, y, z);
+    dummy.rotation.set(0, rotY, 0);
+    dummy.scale.set(scale, scale, scale);
+    dummy.updateMatrix();
+    grass.setMatrixAt(i, dummy.matrix);
+    grassData.push({ x, y, z, rotY, scale, phase: Math.random() * Math.PI * 2, speed: 0.8 + Math.random() * 1.2 });
+    const c = new THREE.Color().setHSL(0.28 + Math.random() * 0.06, 0.55, 0.22 + Math.random() * 0.18);
+    grass.setColorAt(i, c);
+  }
+  grass.instanceMatrix.needsUpdate = true;
+  grass.instanceColor.needsUpdate = true;
+  scene.add(grass);
+
+  // store grassData globally for updateAnimations
+  window.__grassData = grassData;
 
   // Moss patches
   const mossMat = new THREE.MeshStandardMaterial({ color: 0x3a6a3a, roughness: 1.0 });
@@ -449,6 +530,21 @@ export function createScene(container) {
     });
 
     pondMat.opacity = 0.75 + Math.sin(time * 1.5) * 0.05;
+
+    const grassMesh = scene.getObjectByName('grassBlades');
+    const grassData = window.__grassData;
+    if (grassMesh && grassData) {
+      const dummy = new THREE.Object3D();
+      grassData.forEach((d, i) => {
+        const sway = Math.sin(time * d.speed + d.phase) * 0.18;
+        dummy.position.set(d.x, d.y, d.z);
+        dummy.rotation.set(sway, d.rotY, 0);
+        dummy.scale.set(d.scale, d.scale, d.scale);
+        dummy.updateMatrix();
+        grassMesh.setMatrixAt(i, dummy.matrix);
+      });
+      grassMesh.instanceMatrix.needsUpdate = true;
+    }
 
     scene.children.forEach(child => {
       if (child.name && child.name.startsWith('lantern')) {
