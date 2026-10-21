@@ -109,6 +109,21 @@ nav .links a:hover {
   transform: none;
 }
 
+.section-text {
+  position: relative;
+}
+.section-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(ellipse at center, rgba(10, 4, 18, 0.55) 0%, rgba(10, 4, 18, 0.25) 45%, transparent 75%);
+  z-index: -1;
+  pointer-events: none;
+}
 .section-text h2 {
   font-family: "Cormorant Garamond", serif;
   font-weight: 1000;
@@ -117,7 +132,9 @@ nav .links a:hover {
   margin-bottom: 16px;
   color: #fff;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 18px rgba(20, 8, 25, 0.7);
+  text-shadow:
+    0 0 24px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .section-text p {
@@ -125,9 +142,11 @@ nav .links a:hover {
   font-size: 13px;
   font-weight: 300;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 0.02em;
-  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
+  text-shadow:
+    0 0 16px rgba(0, 0, 0, 0.9),
+    0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .scroll-indicator {
@@ -242,16 +261,20 @@ nav .links a:hover {
   font-style: italic;
   font-size: clamp(18px, 2.4vw, 26px);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.98);
   margin-bottom: 18px;
-  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
+  text-shadow:
+    0 0 16px rgba(0, 0, 0, 0.9),
+    0 1px 4px rgba(0, 0, 0, 0.8);
 }
 .objective,
 .contact-intro,
 .intro-line,
 .muted {
-  color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 1px 10px rgba(20, 8, 25, 0.8);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow:
+    0 0 14px rgba(0, 0, 0, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.8);
 }
 .objective {
   font-size: 15px;
