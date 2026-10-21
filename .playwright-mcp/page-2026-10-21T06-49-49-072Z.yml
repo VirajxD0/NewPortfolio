@@ -1,0 +1,299 @@
+- generic [active] [ref=f2e1]:
+  - navigation [ref=f2e2]:
+    - generic [ref=f2e3]: Sakura Gardens
+    - generic [ref=f2e4]:
+      - link "About" [ref=f2e5] [cursor=pointer]:
+        - /url: "#about"
+      - link "Experience" [ref=f2e6] [cursor=pointer]:
+        - /url: "#experience"
+      - link "Skills" [ref=f2e7] [cursor=pointer]:
+        - /url: "#skills"
+      - link "Projects" [ref=f2e8] [cursor=pointer]:
+        - /url: "#projects"
+      - link "Contact" [ref=f2e9] [cursor=pointer]:
+        - /url: "#contact"
+  - generic:
+    - generic [ref=f2e12]:
+      - paragraph [ref=f2e13]: About
+      - heading "Viraj Deshmukh" [level=2] [ref=f2e14]
+      - paragraph [ref=f2e15]: Full Stack Developer · Forward Deployed Engineer
+      - paragraph [ref=f2e16]: Developer with practical experience shipping real websites and handling full-stack deployments. I enjoy writing clean code, solving problems, and working closely with clients. Looking for a full-stack role where I can contribute meaningfully and grow further.
+      - generic [ref=f2e17]:
+        - link "✉ virajxd@icloud.com" [ref=f2e18] [cursor=pointer]:
+          - /url: mailto:virajxd@icloud.com
+        - link "GitHub · VirajxD0" [ref=f2e19] [cursor=pointer]:
+          - /url: https://github.com/VirajxD0
+        - link "mysite.com" [ref=f2e20] [cursor=pointer]:
+          - /url: https://mysite.com
+        - link "+91 9322267813" [ref=f2e21] [cursor=pointer]:
+          - /url: tel:+919322267813
+      - generic [ref=f2e22]:
+        - generic [ref=f2e23]:
+          - heading "Education" [level=4] [ref=f2e24]
+          - paragraph [ref=f2e25]: Vishwakarma University
+          - paragraph [ref=f2e26]: BTech Computer Engineering · 2026
+          - paragraph [ref=f2e27]: CGPA 8.22
+        - generic [ref=f2e28]:
+          - heading "Certifications" [level=4] [ref=f2e29]
+          - list [ref=f2e30]:
+            - listitem [ref=f2e31]: ·Full Stack Software Developer — IBM
+            - listitem [ref=f2e32]: ·Backend Development — IBM
+            - listitem [ref=f2e33]: ·Fundamentals of Deep Learning — NVIDIA
+            - listitem [ref=f2e34]: ·Green Skills & AI — EDUNET FOUNDATION
+            - listitem [ref=f2e35]: ·Smart India Hackathon (SIH) 2025
+        - generic [ref=f2e36]:
+          - heading "Coursework" [level=4] [ref=f2e37]
+          - paragraph [ref=f2e38]: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks
+        - generic [ref=f2e39]:
+          - heading "Highlights" [level=4] [ref=f2e40]
+          - paragraph [ref=f2e41]: SIH ×2 · CTF competition · 3rd place internal hackathon · Volunteered India First Tech Challenge (FTC)
+    - generic [ref=f2e42]:
+      - paragraph [ref=f2e43]: Experience
+      - heading "Professional Experience" [level=2] [ref=f2e44]
+      - generic [ref=f2e45]:
+        - generic [ref=f2e46]:
+          - generic [ref=f2e47]:
+            - heading "Sprintofy" [level=3] [ref=f2e48]
+            - paragraph [ref=f2e49]: Full-Stack / Forward Deployed Engineer
+          - generic [ref=f2e50]: Feb 2026 – Present
+        - list [ref=f2e51]:
+          - listitem [ref=f2e52]: Worked directly with clients to understand business requirements, map workflows, and translate them into technical solutions.
+          - listitem [ref=f2e53]: Designed and developed a custom packaging-industry ERP around a client's business processes, operational workflows, and data relationships.
+          - listitem [ref=f2e54]: Collaborated with stakeholders to refine ERP modules, workflows, and system behavior based on real-world requirements.
+          - listitem [ref=f2e55]: Built and deployed production web applications, including playnear.in and hesprosports.com.
+          - listitem [ref=f2e56]: Managed complete VPS deployments — frontend, backend, database, and production environments from scratch.
+          - listitem [ref=f2e57]: Developed responsive React + Tailwind applications with REST API integrations, dynamic routing, and reusable component architecture.
+          - listitem [ref=f2e58]: Debugged and resolved complex state-management, type-safety, API-integration, and deployment issues in production.
+          - listitem [ref=f2e59]: Built a dynamic sports event platform with real-time event data via REST APIs; optimized mobile performance; structured backend-ready data models aligned with SQL schemas.
+    - generic [ref=f2e60]:
+      - paragraph [ref=f2e61]: Skills
+      - heading "Technical Skills" [level=2] [ref=f2e62]
+      - generic [ref=f2e63]:
+        - generic [ref=f2e64]:
+          - heading "Web Stack" [level=4] [ref=f2e65]
+          - generic [ref=f2e66]:
+            - generic [ref=f2e67]: HTML5
+            - generic [ref=f2e68]: CSS3
+            - generic [ref=f2e69]: Tailwind CSS
+            - generic [ref=f2e70]: React.js
+            - generic [ref=f2e71]: Next.js
+            - generic [ref=f2e72]: Axios
+        - generic [ref=f2e73]:
+          - heading "Java Full Stack" [level=4] [ref=f2e74]
+          - generic [ref=f2e75]:
+            - generic [ref=f2e76]: Core Java
+            - generic [ref=f2e77]: JDBC
+            - generic [ref=f2e78]: Servlets
+            - generic [ref=f2e79]: JSP
+            - generic [ref=f2e80]: Spring
+            - generic [ref=f2e81]: Spring Boot
+            - generic [ref=f2e82]: Hibernate
+            - generic [ref=f2e83]: REST APIs
+        - generic [ref=f2e84]:
+          - heading "Backend & Database" [level=4] [ref=f2e85]
+          - generic [ref=f2e86]:
+            - generic [ref=f2e87]: Node.js
+            - generic [ref=f2e88]: Express.js
+            - generic [ref=f2e89]: RESTful APIs
+            - generic [ref=f2e90]: JWT Auth
+            - generic [ref=f2e91]: Oracle SQL
+            - generic [ref=f2e92]: MongoDB
+            - generic [ref=f2e93]: Mongoose
+        - generic [ref=f2e94]:
+          - heading "Languages" [level=4] [ref=f2e95]
+          - generic [ref=f2e96]:
+            - generic [ref=f2e97]: C++
+            - generic [ref=f2e98]: Java
+            - generic [ref=f2e99]: JavaScript
+        - generic [ref=f2e100]:
+          - heading "Cloud & DevOps" [level=4] [ref=f2e101]
+          - generic [ref=f2e102]:
+            - generic [ref=f2e103]: AWS
+            - generic [ref=f2e104]: Microsoft Azure
+            - generic [ref=f2e105]: Azure DevOps
+            - generic [ref=f2e106]: CI/CD Pipelines
+            - generic [ref=f2e107]: Docker
+        - generic [ref=f2e108]:
+          - heading "Tools & Others" [level=4] [ref=f2e109]
+          - generic [ref=f2e110]:
+            - generic [ref=f2e111]: Git
+            - generic [ref=f2e112]: GitHub
+            - generic [ref=f2e113]: Postman
+            - generic [ref=f2e114]: HTTPie
+            - generic [ref=f2e115]: System Design
+    - generic [ref=f2e116]:
+      - paragraph [ref=f2e117]: Projects
+      - heading "✨Projects" [level=2] [ref=f2e118]
+      - paragraph [ref=f2e119]: Click a project to expand details.
+      - generic [ref=f2e120]:
+        - article [ref=f2e121]:
+          - button "Multi-Tenant SaaS Project Management Platform Next.js TypeScript Prisma PostgreSQL Stripe" [ref=f2e122] [cursor=pointer]:
+            - generic [ref=f2e123]: Multi-Tenant SaaS Project Management Platform
+            - generic [ref=f2e124]:
+              - generic [ref=f2e125]: Next.js
+              - generic [ref=f2e126]: TypeScript
+              - generic [ref=f2e127]: Prisma
+              - generic [ref=f2e128]: PostgreSQL
+              - generic [ref=f2e129]: Stripe
+            - generic [aria-hidden] [ref=f2e130]: ⌄
+          - generic [ref=f2e132]:
+            - paragraph [ref=f2e133]: Full-Stack Multi-Tenant SaaS with organization workspaces, role-based access control (Owner/Admin/Member), and strict data isolation.
+            - list [ref=f2e134]:
+              - listitem [ref=f2e135]: ▹ Implemented Stripe subscriptions with webhooks, Customer Portal, and feature gating, alongside Server Actions, React Server Components, and optimistic UI updates.
+              - listitem [ref=f2e136]: ▹ Developed drag-and-drop Kanban boards, real-time task management, email invitations (Resend), analytics dashboard, soft deletes, and audit logs.
+              - listitem [ref=f2e137]: ▹ TypeScript strict mode with Zod validation across the stack.
+            - generic [ref=f2e138]:
+              - link "Live ↗" [ref=f2e139] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e140] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e141]:
+          - button "AI Expense Tracker Node.js Express TypeScript MySQL Gemini React" [ref=f2e142] [cursor=pointer]:
+            - generic [ref=f2e143]: AI Expense Tracker
+            - generic [ref=f2e144]:
+              - generic [ref=f2e145]: Node.js
+              - generic [ref=f2e146]: Express
+              - generic [ref=f2e147]: TypeScript
+              - generic [ref=f2e148]: MySQL
+              - generic [ref=f2e149]: Gemini
+              - generic [ref=f2e150]: React
+            - generic [aria-hidden] [ref=f2e151]: ⌄
+          - generic [ref=f2e153]:
+            - paragraph [ref=f2e154]: AI-Powered Personal Finance Tracker — production-grade REST API with intelligent expense categorization.
+            - list [ref=f2e155]:
+              - listitem [ref=f2e156]: ▹ JWT authentication (access + refresh token rotation) with Helmet, rate limiting, Zod validation, HPP.
+              - listitem [ref=f2e157]: ▹ Google Gemini 2.0 Flash for categorization, AI budget suggestions, and natural-language financial queries.
+              - listitem [ref=f2e158]: ▹ Bulk CSV import (up to 1000 expenses), real-time stats, category budgets, soft deletes, Swagger/OpenAPI docs.
+              - listitem [ref=f2e159]: ▹ Modular architecture with Pino logging, request tracing, Jest test suite.
+            - generic [ref=f2e160]:
+              - link "Live ↗" [ref=f2e161] [cursor=pointer]:
+                - /url: https://cocowallet-lovat.vercel.app
+              - link "Code ↗" [ref=f2e162] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e163]:
+          - button "FinCore Transaction Management System Java 17 Spring Boot 3 Spring Security MySQL 8 React TS" [ref=f2e164] [cursor=pointer]:
+            - generic [ref=f2e165]: FinCore Transaction Management System
+            - generic [ref=f2e166]:
+              - generic [ref=f2e167]: Java 17
+              - generic [ref=f2e168]: Spring Boot 3
+              - generic [ref=f2e169]: Spring Security
+              - generic [ref=f2e170]: MySQL 8
+              - generic [ref=f2e171]: React
+              - generic [ref=f2e172]: TS
+            - generic [aria-hidden] [ref=f2e173]: ⌄
+          - generic [ref=f2e175]:
+            - paragraph [ref=f2e176]: FinTech transactional transfer engine with pessimistic row locking and double-entry ledger.
+            - list [ref=f2e177]:
+              - listitem [ref=f2e178]: ▹ DB-backed idempotency, 1 debit + 1 credit per transfer, session-cookie auth with BCrypt, CSRF, RBAC, ownership checks.
+              - listitem [ref=f2e179]: ▹ Admin freeze/unfreeze, audit trail, CSV statements.
+              - listitem [ref=f2e180]: ▹ Verified with 13 backend tests including 10-thread concurrent overspend test; React typecheck + production build.
+            - generic [ref=f2e181]:
+              - link "Live ↗" [ref=f2e182] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e183] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e184]:
+          - button "Library Management System Java 17 Spring Boot JSP/JSTL JPA MySQL JWT" [ref=f2e185] [cursor=pointer]:
+            - generic [ref=f2e186]: Library Management System
+            - generic [ref=f2e187]:
+              - generic [ref=f2e188]: Java 17
+              - generic [ref=f2e189]: Spring Boot
+              - generic [ref=f2e190]: JSP/JSTL
+              - generic [ref=f2e191]: JPA
+              - generic [ref=f2e192]: MySQL
+              - generic [ref=f2e193]: JWT
+            - generic [aria-hidden] [ref=f2e194]: ⌄
+          - generic [ref=f2e196]:
+            - paragraph [ref=f2e197]: Production-ready REST API with clean controller → service → repository separation, DTOs, validation, global exception handling.
+            - list [ref=f2e198]:
+              - listitem [ref=f2e199]: ▹ Spring Security with JWT and librarian-vs-member authorization; borrowing/returning with due-date and fine calculations.
+              - listitem [ref=f2e200]: ▹ Pagination, sorting, multi-criteria search with JPA Specifications; JUnit/Mockito unit tests + API integration tests.
+            - generic [ref=f2e201]:
+              - link "Live ↗" [ref=f2e202] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e203] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e204]:
+          - button "Subscription Management API Node.js Express.js MongoDB JWT Nodemailer" [ref=f2e205] [cursor=pointer]:
+            - generic [ref=f2e206]: Subscription Management API
+            - generic [ref=f2e207]:
+              - generic [ref=f2e208]: Node.js
+              - generic [ref=f2e209]: Express.js
+              - generic [ref=f2e210]: MongoDB
+              - generic [ref=f2e211]: JWT
+              - generic [ref=f2e212]: Nodemailer
+            - generic [aria-hidden] [ref=f2e213]: ⌄
+          - generic [ref=f2e215]:
+            - paragraph [ref=f2e216]: Production-ready backend for managing user subscriptions and plans.
+            - list [ref=f2e217]:
+              - listitem [ref=f2e218]: ▹ Secure authentication, rate limiting, and abuse protection (Upstash, Arcjet).
+              - listitem [ref=f2e219]: ▹ Email notifications and background processing.
+            - generic [ref=f2e220]:
+              - link "Live ↗" [ref=f2e221] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e222] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e223]:
+          - button "CI/CD Pipeline — YouTube Clone Web App Azure DevOps YAML Pipelines Azure App Service" [ref=f2e224] [cursor=pointer]:
+            - generic [ref=f2e225]: CI/CD Pipeline — YouTube Clone Web App
+            - generic [ref=f2e226]:
+              - generic [ref=f2e227]: Azure DevOps
+              - generic [ref=f2e228]: YAML Pipelines
+              - generic [ref=f2e229]: Azure App Service
+            - generic [aria-hidden] [ref=f2e230]: ⌄
+          - generic [ref=f2e232]:
+            - paragraph [ref=f2e233]: End-to-end CI/CD pipelines with multi-stage deployments to Azure App Service.
+            - list [ref=f2e234]:
+              - listitem [ref=f2e235]: ▹ Blue-Green deployments using deployment slots for zero-downtime releases.
+            - generic [ref=f2e236]:
+              - link "Live ↗" [ref=f2e237] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e238] [cursor=pointer]:
+                - /url: "#"
+        - article [ref=f2e239]:
+          - button "AI Chatbot (MERN Full Stack) MongoDB Express.js React.js Node.js OpenAI" [ref=f2e240] [cursor=pointer]:
+            - generic [ref=f2e241]: AI Chatbot (MERN Full Stack)
+            - generic [ref=f2e242]:
+              - generic [ref=f2e243]: MongoDB
+              - generic [ref=f2e244]: Express.js
+              - generic [ref=f2e245]: React.js
+              - generic [ref=f2e246]: Node.js
+              - generic [ref=f2e247]: OpenAI
+            - generic [aria-hidden] [ref=f2e248]: ⌄
+          - generic [ref=f2e250]:
+            - paragraph [ref=f2e251]: Full-stack AI chat application built with the MERN stack by integrating OpenAI.
+            - list [ref=f2e252]:
+              - listitem [ref=f2e253]: ▹ Integrated backend APIs and persisted chat history.
+            - generic [ref=f2e254]:
+              - link "Live ↗" [ref=f2e255] [cursor=pointer]:
+                - /url: "#"
+              - link "Code ↗" [ref=f2e256] [cursor=pointer]:
+                - /url: "#"
+    - generic [ref=f2e257]:
+      - paragraph [ref=f2e258]: Contact
+      - heading "Let's Connect" [level=2] [ref=f2e259]
+      - paragraph [ref=f2e260]: Open to full-stack opportunities and collaborations. Reach out anytime.
+      - generic [ref=f2e261]:
+        - link "✉ Email virajxd@icloud.com" [ref=f2e262] [cursor=pointer]:
+          - /url: mailto:virajxd@icloud.com
+          - generic [ref=f2e263]: ✉
+          - generic [ref=f2e264]: Email
+          - generic [ref=f2e265]: virajxd@icloud.com
+        - link "⌥ GitHub github.com/VirajxD0" [ref=f2e266] [cursor=pointer]:
+          - /url: https://github.com/VirajxD0
+          - generic [ref=f2e267]: ⌥
+          - generic [ref=f2e268]: GitHub
+          - generic [ref=f2e269]: github.com/VirajxD0
+        - link "↗ Website mysite.com" [ref=f2e270] [cursor=pointer]:
+          - /url: https://mysite.com
+          - generic [ref=f2e271]: ↗
+          - generic [ref=f2e272]: Website
+          - generic [ref=f2e273]: mysite.com
+        - link "☎ Phone +91 9322267813" [ref=f2e274] [cursor=pointer]:
+          - /url: tel:+919322267813
+          - generic [ref=f2e275]: ☎
+          - generic [ref=f2e276]: Phone
+          - generic [ref=f2e277]: +91 9322267813
+      - paragraph [ref=f2e278]: © 2026 Viraj Deshmukh
+  - generic [ref=f2e279]: Scroll
+  - button "Free Roam" [ref=f2e288] [cursor=pointer]

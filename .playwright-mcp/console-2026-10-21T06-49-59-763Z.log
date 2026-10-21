@@ -1,0 +1,67 @@
+[     427ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[     439ms] [WARNING] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[    1547ms] [LOG] tick 60 currentScroll approx 0 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    2547ms] [LOG] tick 120 currentScroll approx 0 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    3546ms] [LOG] tick 180 currentScroll approx 0 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    4547ms] [LOG] tick 240 currentScroll approx 2846 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    5547ms] [LOG] tick 300 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    6547ms] [LOG] tick 360 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    7547ms] [LOG] tick 420 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    8548ms] [LOG] tick 480 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[    9547ms] [LOG] tick 540 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   10547ms] [LOG] tick 600 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   11547ms] [LOG] tick 660 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   12548ms] [LOG] tick 720 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   13547ms] [LOG] tick 780 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   14547ms] [LOG] tick 840 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   15547ms] [LOG] tick 900 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   16547ms] [LOG] tick 960 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   17547ms] [LOG] tick 1020 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   18547ms] [LOG] tick 1080 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   18984ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[   19001ms] [LOG] toggle visible section 0 sp 0 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19009ms] [WARNING] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[   19093ms] [LOG] toggle visible section 0 sp 0 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19157ms] [LOG] toggle visible section 0 sp 0.0039081885856079406 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19164ms] [LOG] toggle visible section 0 sp 0.010198511166253102 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19181ms] [LOG] toggle visible section 0 sp 0.01969727047146402 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19199ms] [LOG] toggle visible section 0 sp 0.03362382133995037 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19215ms] [LOG] toggle visible section 0 sp 0.05239533498759305 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19231ms] [LOG] toggle visible section 0 sp 0.07671775682382134 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19248ms] [LOG] toggle visible section 0 sp 0.10827246848635236 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19266ms] [LOG] toggle visible section 0 sp 0.14859067950372207 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19283ms] [LOG] toggle visible section 0 sp 0.19871125328039702 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19299ms] [LOG] toggle visible section 0 sp 0.2613263227235732 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19316ms] [LOG] toggle visible section 0 sp 0.3385895941590074 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19332ms] [LOG] toggle visible section 0 sp 0.43185182421058066 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19332ms] [LOG] toggle visible section 1 sp 0.43185182421058066 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19349ms] [LOG] toggle visible section 0 sp 0.5492655784751642 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19349ms] [LOG] toggle visible section 1 sp 0.5492655784751642 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19366ms] [LOG] toggle visible section 1 sp 0.6900948449141264 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19382ms] [LOG] toggle visible section 1 sp 0.861194982631053 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19400ms] [LOG] toggle visible section 1 sp 1.0594894848641476 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19414ms] [LOG] toggle visible section 1 sp 1.2763757069980177 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19431ms] [LOG] toggle visible section 1 sp 1.5116712852013918 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19431ms] [LOG] toggle visible section 2 sp 1.5116712852013918 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19448ms] [LOG] toggle visible section 2 sp 1.753133554215704 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19467ms] [LOG] toggle visible section 2 sp 1.9937599451095358 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19483ms] [LOG] toggle visible section 2 sp 2.2286928196112017 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19499ms] [LOG] toggle visible section 2 sp 2.4546043797584405 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19499ms] [LOG] toggle visible section 3 sp 2.4546043797584405 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19514ms] [LOG] toggle visible section 3 sp 2.6675296576529064 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19531ms] [LOG] toggle visible section 3 sp 2.8687631802166176 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19549ms] [LOG] toggle visible section 3 sp 3.058782256332103 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19565ms] [LOG] toggle visible section 3 sp 3.2366660035768486 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19582ms] [LOG] toggle visible section 3 sp 3.4022360286679305 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19582ms] [LOG] toggle visible section 4 sp 3.4022360286679305 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19598ms] [LOG] toggle visible section 3 sp 3.5562801380708207 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19598ms] [LOG] toggle visible section 4 sp 3.5562801380708207 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   19614ms] [LOG] toggle visible section 4 sp 3.698498055866086 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   20045ms] [LOG] toggle visible section 4 sp 4.038016806975747 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   20057ms] [LOG] toggle visible section 4 sp 4.322100790493749 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   20067ms] [LOG] toggle visible section 4 sp 4.552903957457035 @ http://127.0.0.1:5173/NewPortfolio/src/scroll.js?t=1792565418569:30
+[   20501ms] [LOG] tick 60 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   21497ms] [LOG] tick 120 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   22497ms] [LOG] tick 180 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   23497ms] [LOG] tick 240 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29
+[   24497ms] [LOG] tick 300 currentScroll approx 3022.5 @ http://127.0.0.1:5173/NewPortfolio/src/main.js:29

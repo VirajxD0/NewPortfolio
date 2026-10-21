@@ -1,0 +1,4 @@
+[     923ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[    1114ms] [WARNING] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[   25789ms] [WARNING] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301
+[   25800ms] [WARNING] THREE.WebGLShadowMap: PCFSoftShadowMap has been removed. Using PCFShadowMap instead. @ http://127.0.0.1:5173/NewPortfolio/node_modules/.vite/deps/chunk-HDEMVUAG.js?v=aa5e2d63:301

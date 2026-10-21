@@ -12,9 +12,11 @@ export function initScroll(camera, cameraViews, sectionTexts, dots, scrollIndica
     currentScroll += (targetScroll - currentScroll) * 0.2;
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = Math.max(0, Math.min(1, currentScroll / scrollHeight));
-    const sectionProgress = progress * (cameraViews.length - 1);
-    const currentIndex = Math.floor(sectionProgress);
-    const t = sectionProgress - currentIndex;
+
+    // camera uses all camera views
+    const camProgress = progress * (cameraViews.length - 1);
+    const currentIndex = Math.floor(camProgress);
+    const t = camProgress - currentIndex;
     const nextIndex = Math.min(currentIndex + 1, cameraViews.length - 1);
     const easedT = t * t * (3 - 2 * t);
 
@@ -25,6 +27,8 @@ export function initScroll(camera, cameraViews, sectionTexts, dots, scrollIndica
     const targetLook = new THREE.Vector3().lerpVectors(currentView.lookAt, nextView.lookAt, easedT);
     camera.lookAt(targetLook);
 
+    // text visibility uses section count
+    const sectionProgress = progress * (sectionTexts.length - 1);
     sectionTexts.forEach((text, i) => {
       const distance = Math.abs(sectionProgress - i);
       text.classList.toggle('visible', distance < 0.6);
